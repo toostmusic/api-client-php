@@ -1,0 +1,24 @@
+{
+    "name": "niland/api-client-php",
+    "description": "Niland API Client for PHP",
+    "type": "library",
+    "homepage": "https://github.com/niland/api-client-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niland Team",
+            "email": "contact@niland.io"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": {
+            "NilandApi": "src/"
+        }
+    }
+}

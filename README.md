@@ -13,7 +13,7 @@ composer require niland/api-client-php
 ```php
 // composer autoload
 require __DIR__ . '/vendor/autoload.php';
-$client = new \NilandApi\Client('YourAPIKey');
+$client = new \NilandApi\Client(YOUR_API_KEY);
 ```
 
 Quick Start
@@ -26,12 +26,12 @@ $response = $client->get('tracks', array('page_size' => 10, 'page' => 2));
 
 Retrieve a track by its reference
 ```php
-$response = $client->get('tracks/reference/foobar');
+$response = $client->get('tracks/reference/YOUR_REFERENCE');
 ```
 
 Find tracks by similarity and/or tags
 ```php
-$response = $client->get('tracks', array(
+$response = $client->get('tracks/search', array(
     'similar_ids' => array(1234),
     'tag_ids'     => array(21, 41)
 ));
@@ -41,6 +41,7 @@ Post a track
 ```php
 $response = $client->post('tracks', array(
     'title'     => 'foobar',
+    'artist'    => 'foobar',
     'reference' => 'foobar',
     'tags'      => array(21, 41),
     'audio'     => fopen('/path/to/your/audio/file.mp3', 'r')

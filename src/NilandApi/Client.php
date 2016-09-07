@@ -15,10 +15,12 @@ class Client
 {
     private $httpClient;
 
-    public function __construct($apiKey)
+    public function __construct($apiKey, $apiBaseUrl = 'https://api.niland.io', $apiVersion = '2.0')
     {
+        $apiBaseUrl = rtrim($apiBaseUrl, '/');
+
         $this->httpClient = new HttpClient(array(
-            'base_uri' => 'https://api.niland.io/2.0/',
+            'base_uri' => sprintf('%s/%s/', $apiBaseUrl, $apiVersion),
             'query'    => array('key' => $apiKey)
         ));
     }

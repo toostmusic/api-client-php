@@ -10,6 +10,7 @@ use NilandApi\Exceptions\AuthenticationFailedException;
 use NilandApi\Exceptions\BadRequestException;
 use NilandApi\Exceptions\ForbiddenException;
 use NilandApi\Exceptions\RuntimeException;
+use NilandApi\Exceptions\ConflictException;
 
 class Client
 {
@@ -85,6 +86,8 @@ class Client
                         throw new NotFoundException(
                             $e->getRequest()->getUri()->__toString()
                         );
+                    case 409:
+                        throw new ConflictException();
                 }
             }
             throw new RuntimeException($e->getMessage());

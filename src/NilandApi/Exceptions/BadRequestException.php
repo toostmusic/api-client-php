@@ -8,10 +8,14 @@ class BadRequestException extends \RuntimeException implements ExceptionInterfac
     {
         $errors = json_decode($content, true);
 
-        foreach ($errors as $field => &$error) {
-            $error = sprintf('[%s] %s', $field, implode(', ', $error));
+        if (true === is_array($errors)) {
+            foreach ($errors as $field => &$error) {
+                $error = sprintf('[%s] %s', $field, implode(', ', $error));
+            }
+
+            return parent::__construct(implode(' ', $errors));
         }
 
-        return parent::__construct(implode(' ', $errors));
+        return parent::__construct('Unknown error');
     }
 }

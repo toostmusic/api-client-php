@@ -47,3 +47,20 @@ $response = $client->post('tracks', array(
     'audio'     => fopen('/path/to/your/audio/file.mp3', 'r')
 ));
 ```
+
+Known Issues
+-------------
+
+You will get a `400 Bad Request` if you use a URL in `fopen` with PHP 7. It generate an invalid chunk body error.
+
+The following exemple will generate a 400:
+
+```php
+$response = $client->post('tracks', array(
+    'title'     => 'foobar',
+    'artist'    => 'foobar',
+    'reference' => 'foobar',
+    'tags'      => array(21, 41),
+    'audio'     => fopen('http://myawesomewebsite.com/file.mp3', 'r')
+));
+```
